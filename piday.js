@@ -6,12 +6,20 @@ const COLORS = [
 
 /**
  * Create a glowing circle that appears on the given coordinate
- * and grows while getting more and more transparent.
+ * and grows while getting more and more transparent. Also plays
+ * a popping sound.
  * 
  * @param {number} x the x position of the center
  * @param {number} y the y position of the center
  */
 function spawnCircle(x, y) {
+    const pop = document.getElementById('pop');
+    if (pop && pop.paused) {
+        pop.volume = 0.3;
+        pop.currentTime = 0;
+        pop.play();
+    }
+
     const circle = document.createElement('div');
     circle.classList.add('circle');
 
